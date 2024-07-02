@@ -98,7 +98,7 @@ fn execute<const N: usize>(
                 head0 = (head0 - 1) % N;
             }
             b'>' => {
-                head0 = (head0 - 1) % N;
+                head0 = (head0 + 1) % N;
             }
             b'{' => {
                 head1 = (head1 - 1) % N;
