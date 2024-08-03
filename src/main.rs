@@ -95,22 +95,22 @@ fn execute<const N: usize>(
     for _ in 0..max_instructions {
         match tape[ip] {
             b'<' => {
-                head0 = (head0 - 1) % N;
+                head0 = (head0 + N - 1) % N;
             }
             b'>' => {
                 head0 = (head0 + 1) % N;
             }
             b'{' => {
-                head1 = (head1 - 1) % N;
+                head1 = (head1 + N - 1) % N;
             }
             b'}' => {
                 head1 = (head1 + 1) % N;
             }
             b'-' => {
-                tape[head0 % N] -= 1;
+                tape[head0 % N] = tape[head0 % N].wrapping_sub(1);
             }
             b'+' => {
-                tape[head0 % N] += 1;
+                tape[head0 % N] = tape[head0 % N].wrapping_add(1);
             }
             b'.' => {
                 tape[head1 % N] = tape[head0 % N];
